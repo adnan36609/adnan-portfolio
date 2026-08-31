@@ -27,7 +27,6 @@ export function Terminal({ data }: TerminalProps) {
     "about",
     "skills",
     "projects",
-    "experience",
     "contact",
     "cat resume.txt",
     "date",
@@ -72,31 +71,42 @@ export function Terminal({ data }: TerminalProps) {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-muted-300">
               <div>
-                <span className="text-contrast font-semibold">help</span> &mdash; List commands
+                <span className="text-contrast font-semibold">help</span>{" "}
+                &mdash; List commands
               </div>
               <div>
-                <span className="text-contrast font-semibold">about</span> &mdash; Profile bio
+                <span className="text-contrast font-semibold">about</span>{" "}
+                &mdash; Profile bio
               </div>
               <div>
-                <span className="text-contrast font-semibold">skills</span> &mdash; Technical stack
+                <span className="text-contrast font-semibold">skills</span>{" "}
+                &mdash; Technical stack
               </div>
               <div>
-                <span className="text-contrast font-semibold">projects</span> &mdash; Production work
+                <span className="text-contrast font-semibold">projects</span>{" "}
+                &mdash; Production work
               </div>
               <div>
-                <span className="text-contrast font-semibold">experience</span> &mdash; Work history
+                <span className="text-contrast font-semibold">experience</span>{" "}
+                &mdash; Work history
               </div>
               <div>
-                <span className="text-contrast font-semibold">contact</span> &mdash; Reach author
+                <span className="text-contrast font-semibold">contact</span>{" "}
+                &mdash; Reach author
               </div>
               <div>
-                <span className="text-contrast font-semibold">cat resume.txt</span> &mdash; Print resume
+                <span className="text-contrast font-semibold">
+                  cat resume.txt
+                </span>{" "}
+                &mdash; Print resume
               </div>
               <div>
-                <span className="text-contrast font-semibold">date</span> &mdash; Local author time
+                <span className="text-contrast font-semibold">date</span>{" "}
+                &mdash; Local author time
               </div>
               <div>
-                <span className="text-contrast font-semibold">clear</span> &mdash; Clear buffer
+                <span className="text-contrast font-semibold">clear</span>{" "}
+                &mdash; Clear buffer
               </div>
             </div>
           </div>
@@ -110,7 +120,9 @@ export function Terminal({ data }: TerminalProps) {
               {data.profile.name} &mdash; {data.profile.title}
             </div>
             <div>{data.profile.bioShort}</div>
-            <div className="text-muted-500">Location: {data.profile.location}</div>
+            <div className="text-muted-500">
+              Location: {data.profile.location}
+            </div>
           </div>
         );
         break;
@@ -118,14 +130,12 @@ export function Terminal({ data }: TerminalProps) {
       case "skills":
         resultNode = (
           <div className="space-y-2 text-xs text-muted-300">
-            {data.skills.map((cat, idx) => (
+            {data.skillsRows.map((cat, idx) => (
               <div key={idx}>
                 <div className="text-contrast font-semibold">
                   [{cat.category}]
                 </div>
-                <div className="text-muted-400">
-                  {cat.items.map((i) => i.name).join(", ")}
-                </div>
+                <div className="text-muted-400">{cat.items.join(", ")}</div>
               </div>
             ))}
           </div>
@@ -138,20 +148,7 @@ export function Terminal({ data }: TerminalProps) {
             {data.projects.map((p, idx) => (
               <div key={idx} className="border-l border-muted-700 pl-2">
                 <div className="text-contrast font-semibold">{p.title}</div>
-                <div className="text-muted-400">{p.summary}</div>
-              </div>
-            ))}
-          </div>
-        );
-        break;
-
-      case "experience":
-        resultNode = (
-          <div className="space-y-2 text-xs text-muted-300">
-            {data.experience.map((e, idx) => (
-              <div key={idx}>
-                <span className="text-contrast font-semibold">{e.role}</span> @{" "}
-                {e.company} ({e.period})
+                <div className="text-muted-400">{p.description}</div>
               </div>
             ))}
           </div>
@@ -181,20 +178,32 @@ export function Terminal({ data }: TerminalProps) {
           resultNode = (
             <pre className="text-xs text-muted-400 font-mono whitespace-pre-wrap">
               {`============================================================
+
 RESUME: ${data.profile.name.toUpperCase()}
-Title: ${data.profile.title}
-Location: ${data.profile.location} | Email: ${data.profile.socials.email}
+TITLE: ${data.profile.title}
+LOCATION: ${data.profile.location}
+EMAIL: ${data.profile.socials.email}
 
 [SUMMARY]
-6+ years architecting scalable full-stack applications, distributed
-systems, and Next.js frontend interfaces.
+
+${data.profile.bioLong}
 
 [CORE STACK]
-TypeScript, Next.js, React, Node.js, Python, Go, Docker, PostgreSQL,
-Redis, AWS, Tailwind CSS.
 
-[EDUCATION]
-B.S. in Computer Science & Engineering — UC Berkeley (Magna Cum Laude)
+${data.skillsRows
+  .map((row) => `${row.category}: ${row.items.join(", ")}`)
+  .join("\n")}
+
+[PROJECTS]
+
+${data.projects
+  .map((project) => `${project.title} — ${project.category}`)
+  .join("\n")}
+
+[STATUS]
+
+${data.profile.status.text}
+
 ============================================================`}
             </pre>
           );
@@ -211,13 +220,12 @@ B.S. in Computer Science & Engineering — UC Berkeley (Magna Cum Laude)
       case "matrix":
         resultNode = (
           <div className="text-xs text-contrast font-mono tracking-widest opacity-80">
-            01000001 01001100 01000101 01011000 00100000 01001101 01001111 01010010
+            01000001 01000100 01001110 01000001 01001110
             <br />
-            SYSTEM BREACH SIMULATED &middot; ACCESS GRANTED
+            SYSTEM SIMULATION · ACCESS GRANTED
           </div>
         );
         break;
-
       case "date":
         resultNode = (
           <div className="text-xs text-muted-300">
@@ -234,7 +242,8 @@ B.S. in Computer Science & Engineering — UC Berkeley (Magna Cum Laude)
       case "sudo":
         resultNode = (
           <div className="text-xs text-muted-400">
-            [ACCESS DENIED] User is not in sudoers file. Please schedule an interview to proceed.
+            [ACCESS DENIED] User is not in sudoers file. Please schedule an
+            interview to proceed.
           </div>
         );
         break;
@@ -246,8 +255,10 @@ B.S. in Computer Science & Engineering — UC Berkeley (Magna Cum Laude)
       default:
         resultNode = (
           <div className="text-xs text-muted-400">
-            Command not recognized: <span className="text-contrast font-semibold">{cmd}</span>. Type{" "}
-            <span className="text-contrast font-semibold">help</span> for all commands.
+            Command not recognized:{" "}
+            <span className="text-contrast font-semibold">{cmd}</span>. Type{" "}
+            <span className="text-contrast font-semibold">help</span> for all
+            commands.
           </div>
         );
         break;
@@ -271,7 +282,8 @@ B.S. in Computer Science & Engineering — UC Berkeley (Magna Cum Laude)
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
       if (history.length > 0) {
-        const nextIdx = historyIdx + 1 < history.length ? historyIdx + 1 : historyIdx;
+        const nextIdx =
+          historyIdx + 1 < history.length ? historyIdx + 1 : historyIdx;
         setHistoryIdx(nextIdx);
         setInput(history[history.length - 1 - nextIdx] || "");
       }
@@ -307,7 +319,8 @@ B.S. in Computer Science & Engineering — UC Berkeley (Magna Cum Laude)
             Developer Terminal
           </h2>
           <p className="text-xs sm:text-sm text-muted-400 font-light">
-            Direct interface for querying repository specifications, capabilities, and system records.
+            Direct interface for querying repository specifications,
+            capabilities, and system records.
           </p>
         </div>
 
@@ -324,9 +337,11 @@ B.S. in Computer Science & Engineering — UC Berkeley (Magna Cum Laude)
               <span className="w-2.5 h-2.5 rounded-full bg-muted-600" />
             </div>
             <div className="text-muted-500 text-[11px]">
-              visitor@alex-morgan-cli:~
+              visitor@mohd-adnan-cli:~
             </div>
-            <div className="text-muted-500 text-[11px]">bash &middot; 80x24</div>
+            <div className="text-muted-500 text-[11px]">
+              bash &middot; 80x24
+            </div>
           </div>
 
           {/* Buffer */}
@@ -334,10 +349,13 @@ B.S. in Computer Science & Engineering — UC Berkeley (Magna Cum Laude)
             {/* Initial Welcome */}
             <div className="text-muted-400 space-y-1">
               <div>
-                Alex Morgan CLI &middot; System Telemetry v6.4.0 (x86_64-nextjs)
+                Mohd Adnan CLI · System Telemetry v1.0.0
               </div>
               <div>
-                Type <span className="text-contrast font-semibold">help</span> to list commands or press <span className="text-contrast font-semibold">Tab</span> for autocomplete.
+                Type <span className="text-contrast font-semibold">help</span>{" "}
+                to list commands or press{" "}
+                <span className="text-contrast font-semibold">Tab</span> for
+                autocomplete.
               </div>
               <div className="border-b border-muted-700/60 pt-2" />
             </div>

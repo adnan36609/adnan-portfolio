@@ -36,7 +36,7 @@ export const portfolioData: PortfolioData = {
 
     location: "India",
 
-    timezone: "IST",
+    timezone: "Asia/Kolkata",
 
     status: {
       available: true,
@@ -239,14 +239,12 @@ export const portfolioData: PortfolioData = {
 
   contactCta: {
     headline: "Contact",
-
     subheadline:
       "Open to internships, collaborations, and opportunities to build meaningful products and solve challenging problems.",
-
     email: "adnan36609@gmail.com",
-
     whatsappNumber: "+917388068867",
-
+    githubUrl: "https://github.com/adnan36609",
+    linkedinUrl: "https://www.linkedin.com/in/mohd-adnan-124965284/",
     footerCopyright: "© 2026 MOHD ADNAN",
   },
 };

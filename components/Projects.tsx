@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { PortfolioData } from "@/data/portfolio";
+import { PortfolioData } from "@/types";
 import { ProjectModal } from "./ProjectModal";
 import { ScrollReveal } from "@/components/ScrollReveal";
 

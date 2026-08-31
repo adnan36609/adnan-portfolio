@@ -2,7 +2,6 @@ export interface Profile {
   name: string;
   preferredName: string;
   title: string;
-  rotatingTitles: string[];
 
   logo: string;
   role: string;
@@ -19,7 +18,6 @@ export interface Profile {
   bio: string;
   bioShort: string;
   bioLong: string;
-  statsHighlight: string;
 
   avatarUrl: string;
   badgePills: string[];
@@ -34,11 +32,11 @@ export interface Profile {
   };
 
   socials: {
+    email: string;
+    whatsapp: string;
     github: string;
     linkedin: string;
-    twitter: string;
-    email: string;
-    resume: string;
+    instagram: string;
   };
 }
 
@@ -96,7 +94,6 @@ export interface TestimonialItem {
 
 export interface PortfolioData {
   profile: Profile;
-  stats: Stat[];
   skillsRows: SkillRow[];
   projects: Project[];
   experience: ExperienceItem[];

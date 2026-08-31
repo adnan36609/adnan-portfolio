@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
-import { PortfolioData } from "@/data/portfolio";
+import { PortfolioData } from "@/types";
 import { Reveal } from "@/components/Reveal";
 import { motion } from "motion/react";
 

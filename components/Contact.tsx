@@ -12,7 +12,9 @@ import {
   Instagram,
 } from "lucide-react";
 
-import { PortfolioData } from "@/data/portfolio";
+import { portfolioData } from "@/data/portfolio";
+
+type PortfolioData = typeof portfolioData;
 
 import { ScrollReveal } from "@/components/ScrollReveal";
 

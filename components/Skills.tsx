@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { PortfolioData } from "@/data/portfolio";
+import { PortfolioData } from "@/types";
 
 import { ScrollReveal } from "@/components/ScrollReveal";
 

@@ -26,7 +26,7 @@ export default function Home() {
       <main className="relative z-10">
         <Hero profile={portfolioData.profile} />
 
-        <About profile={portfolioData.profile} />
+        <About />
 
         <Projects projects={portfolioData.projects} />
 
