@@ -162,8 +162,8 @@ export const portfolioData: PortfolioData = {
 
       image: "/portfolio.png",
 
-      liveUrl: "YOUR_PORTFOLIO_URL",
-      githubUrl: "YOUR_GITHUB_REPO_URL",
+      liveUrl: "https://adnan-portfolio-36609.vercel.app/",
+      githubUrl: "https://github.com/adnan36609/adnan-portfolio",
 
       reverse: false,
 
