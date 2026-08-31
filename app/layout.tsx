@@ -42,6 +42,7 @@ export const metadata: Metadata = {
     "API Integration",
   ],
   authors: [{ name: "Mohd Adnan" }],
+  icons: { icon: "/favicon.png", },
   openGraph: {
     title: "Full-Stack Developer",
     description: "I build full-stack AI-powered products.",
