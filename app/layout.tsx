@@ -29,7 +29,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ADNAN-Portfilio",
+  title: "ADNAN-Portfolio",
   description:
     "I build modern full-stack and AI-powered web applications with React, Next.js and Node.js.",
   keywords: [
