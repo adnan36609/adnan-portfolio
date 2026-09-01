@@ -3,7 +3,7 @@
 Personal portfolio site built with Next.js, React, and Tailwind CSS.
 
 ## Live Site
-[http://localhost:3002/#hero]
+[http://adnan-portfolio-36609.vercel.app]
 
 ## Tech Stack
 - Next.js (App Router)
